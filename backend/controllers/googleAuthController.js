@@ -8,7 +8,7 @@ passport.use(new OAuth2Strategy({
     clientSecret: process.env.GOOGLE_AUTH_CLIENT_SECRET,
     
     scope: ['profile', 'email'],
-    callbackURL: '/api/auth/google/callback',
+    callbackURL: 'https://epic-escapes-frontend.onrender.com/api/auth/google/callback',
     
 },
 
@@ -87,7 +87,11 @@ export const googleLogout = (req, res, next) => {
       }
   
       req.session = null;
-      res.clearCookie('connect.sid');
+      res.clearCookie('connect.sid', {
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "None",
+      });
       res.send({
         success: true,
         isAuth: req.isAuthenticated()
