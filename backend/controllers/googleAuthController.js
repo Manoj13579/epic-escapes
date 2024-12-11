@@ -8,7 +8,7 @@ passport.use(new OAuth2Strategy({
     clientSecret: process.env.GOOGLE_AUTH_CLIENT_SECRET,
     
     scope: ['profile', 'email'],
-    callbackURL: 'https://epic-escapes-frontend.onrender.com/api/auth/google/callback',
+    callbackURL: 'https://epic-escapes-backend.onrender.com/api/auth/google/callback',
     
 },
 

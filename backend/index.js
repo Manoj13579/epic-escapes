@@ -21,7 +21,6 @@ app.use(session({
     secret: process.env.SESSION_SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
       collectionName: "sessions",
@@ -49,6 +48,8 @@ const corsOptions = {
     origin: process.env.FRONTEND_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "HEAD", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Set-Cookie"],
 }
   app.use(cors(corsOptions));
 
