@@ -29,7 +29,7 @@ const GoogleLoginSuccess = () => {
           authProvider
         }));
         toast.success("Successfully logged in");
-          navigate('/choose');
+          navigate('/get-user-booking');
       }
     } catch (error) {
       toast.error('An error occurred in login try again');
