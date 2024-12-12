@@ -14,7 +14,7 @@ import MongoStore from "connect-mongo";
 
 
 const app = express();
-
+app.set("trust proxy", 1); // Trust first proxy (e.g., Render's proxy)
 
 
 app.use(session({
