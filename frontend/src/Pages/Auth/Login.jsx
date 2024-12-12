@@ -48,7 +48,7 @@ const navigate = useNavigate();
   const handleGoogleLogIn = async () => {
     console.log('handleGoogleLogIn hit');
     
-      window.open(`${import.meta.env.VITE_API_BASE_URL}/api/auth/google/callback`, '_self')
+      window.open(`${import.meta.env.VITE_API_BASE_URL}/api/auth/google`, '_self')
 };
   
   const togglePasswordVisibility = () => {

@@ -31,6 +31,7 @@ app.use(session({
       sameSite: 'None',
       path: '/',
       maxAge: 24 * 60 * 60 * 1000,
+      // remove the session document from the mongodb when cookie expires
       autoRemove: "native",
     },
   }));

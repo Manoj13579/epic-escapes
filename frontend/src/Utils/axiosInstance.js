@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.response.use(
-  // If the response is successful, return it as it is.
+   /* If the response is successful, return it as it is. also helpful in google login using session that has own token and expiry(long duration). won't interfer here coz token is long lived(in backend in session cookie expiry date is one day) and in every request it will be successful request */
   (response) => {
     return response;
   },
