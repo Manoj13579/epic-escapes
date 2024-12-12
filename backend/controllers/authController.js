@@ -176,8 +176,18 @@ const logout = async (req, res) => {
   }
     try {
       await Users.findOneAndUpdate({ refreshToken }, { refreshToken: null });
-        res.clearCookie("accessToken");
-        res.clearCookie("refreshToken");
+      res.clearCookie("accessToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', 
+        sameSite: "None",
+        path: '/'
+      });
+      res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', 
+        sameSite: "None",
+        path: '/'
+      });
         res.status(200).json({ success: true, message: "successfully logged out" });
     } 
     catch (error) {
