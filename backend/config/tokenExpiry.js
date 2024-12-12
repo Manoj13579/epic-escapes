@@ -1,5 +1,5 @@
-const accessTokenExpiryDate = "15s";
-const refreshTokenExpiryDate = "3h";
+const accessTokenExpiryDate = "2h";
+const refreshTokenExpiryDate = "15h";
 
 
 
