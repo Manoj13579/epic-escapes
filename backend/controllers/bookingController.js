@@ -116,7 +116,6 @@ export const createBooking = async (req, res) => {
 
 // Get all bookings for a user
 export const getUserBooking = async (req, res) => {
-  console.log('getbook' ,req.body.userId);
   
   try {
     /* populate('products'- give all information of the produsts booked by this userId. from products id in bookings model get all info of paricular products from products model. each populate creates one _id */
