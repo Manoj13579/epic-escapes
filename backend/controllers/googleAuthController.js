@@ -39,11 +39,13 @@ async (accessToken, refreshToken, profile, done) => {
         done(error);
     }
 }));
+
+// store user.id in session
 passport.serializeUser((user, done) => {
     
     done(null, user.id);
 });
-
+// Retrieve the user object from the database using the user.id
 passport.deserializeUser(async (id, done) => {
    
     
@@ -58,6 +60,7 @@ passport.deserializeUser(async (id, done) => {
 
 export const googleAuth = passport.authenticate('google', { scope: ['profile', 'email'] });
 
+/* after google redirects this invoked which invokes above callbackUR and async (accessToken run then successRedirect continues. cors will only stop request from browser with get. post etc. redirects are allowed by cors. redirects are seen as request from server too */
 export const googleAuthCallback = passport.authenticate('google', {
 
             successRedirect: (`${process.env.FRONTEND_URL}/google-login-success`),
