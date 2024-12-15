@@ -8,6 +8,7 @@ passport.use(new OAuth2Strategy({
     clientSecret: process.env.GOOGLE_AUTH_CLIENT_SECRET,
     
     scope: ['profile', 'email'],
+    /* same url listed in google console for redirect. when google redirects to this url call callback mentioned below tells passport wher it will get data after successfull login. it invokes googleAuthCallback then. */
     callbackURL: 'https://epic-escapes-backend.onrender.com/api/auth/google/callback',
     
 },
@@ -73,10 +74,10 @@ export const userInfo = (req, res) => {
     const { password, ...sanitizedUser } = req.user.toObject();
     if(req.user) {
         
-        res.status(200).json({success: true, message: "successfully logged in", user: sanitizedUser})
+       return res.status(200).json({success: true, message: "successfully logged in", user: sanitizedUser})
     }
     else {
-        res.status(400).json({success: false, message: "Not Authorized"})
+       return res.status(400).json({success: false, message: "Not Authorized"})
     }
 }
 
