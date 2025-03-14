@@ -62,7 +62,7 @@ const ResetPassword = () => {
               autoFocus
               type="text"
               name="verification-code"
-              value={setFormData.verificationCode}
+              value={formData.verificationCode}
               onChange={(e) => setFormData({...formData, verificationCode: e.target.value})}
             />
           </div>
@@ -76,7 +76,7 @@ const ResetPassword = () => {
               required
               type="email"
               name="email"
-              value={setFormData.email}
+              value={formData.email}
               onChange = {(e) => setFormData({...formData, email: e.target.value})}
             />
           </div>
@@ -91,7 +91,7 @@ const ResetPassword = () => {
               // Toggle between text and password
               type={showPassword ? 'text' : 'password'}
               name="password"
-              value={setFormData.password}
+              value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})}
             />
             {/* Toggle icon */}

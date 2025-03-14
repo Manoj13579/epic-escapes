@@ -25,7 +25,7 @@ const RegisterVerification = () => {
           }, {withCredentials: true});
           if(response.data.success) {
             sessionStorage.setItem('user', JSON.stringify(response.data.user));
-            navigate('/choose');
+            navigate(response.data.user.role === "user" ? "/get-user-booking" : "/management-dashboard");
             toast.success(response.data.message);
           };
         } catch (error) {
