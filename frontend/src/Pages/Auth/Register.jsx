@@ -71,7 +71,8 @@ const MAX_FILE_SIZE = 1 * 1024 * 1024;
           const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, { updatedFormData });
           if(response.data.success){
             setFormData({
-              name: "",
+              firstName: "",
+              lastName:"",
               email: "",
               password: "",
               image: null,
