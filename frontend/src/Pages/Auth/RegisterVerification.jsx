@@ -44,7 +44,7 @@ const RegisterVerification = () => {
 const handleResendCode = async () => {
   setButtonDisabled(true);
   try {
-    const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/resend-verification-code`,{ _id: user_id });
+    const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/resend-verification-code`,{ _id: user_id });
     if(response.data.success) {
       toast.success(response.data.message, { autoClose: false, position: 'top-center' });
     }
