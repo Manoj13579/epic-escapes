@@ -50,7 +50,7 @@ const handleResendCode = async () => {
     }
   } catch (error) {
     if(error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 404)) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
     else{
       toast.error("error in resending code! try again");
