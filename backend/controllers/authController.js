@@ -73,7 +73,7 @@ const login = async (req, res) => {
         .status(403)
         .json({ success: false, message: "email not verified" });
     }
-    if(user.lockLoginUntil && user.lockLoginUntil >= Date.now()){
+    if(user.lockLoginUntil && user.lockLoginUntil.getTime() >= Date.now()){
       return res
         .status(403)
         .json({ success: false, message: "Account Locked! try again later" });
@@ -253,7 +253,7 @@ const logout = async (req, res) => {
         _id,
         verificationCodeExpiresAt:{$gt:Date.now()}
       })
-      if(user.lockVerificationCodeUntil && user.lockVerificationCodeUntil >= Date.now()) {
+      if(user.lockVerificationCodeUntil && user.lockVerificationCodeUntil.getTime() >= Date.now()) {
         return res.status(403).json({ success: false, message: "Maximum resend attempts reached, try again later" });
       }
       if (!user) {
@@ -339,7 +339,7 @@ try {
     return res.status(404).json({ success: false, message: 'user not found'});
   };
   // Check if the account is currently locked
-  if (user.lockresetPasswordUntil && user.lockresetPasswordUntil > Date.now()) {
+  if (user.lockresetPasswordUntil && user.lockresetPasswordUntil.getTime() > Date.now()) {
     return res
       .status(403)
       .json({ success: false, message: "Account is locked. Please try again later." });
