@@ -339,7 +339,7 @@ try {
     return res.status(404).json({ success: false, message: 'user not found'});
   };
   // Check if the account is currently locked
-  if (user.lockresetPasswordUntil && user.lockresetPasswordUntil.getTime() > Date.now()) {
+  if (user.lockresetPasswordUntil && user.lockresetPasswordUntil.getTime() >= Date.now()) {
     return res
       .status(403)
       .json({ success: false, message: "Account is locked. Please try again later." });
