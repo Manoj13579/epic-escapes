@@ -118,7 +118,7 @@ export const createBooking = async (req, res) => {
 export const getUserBooking = async (req, res) => {
   
   try {
-    /* populate('products'- give all information of the produsts booked by this userId. from products id in bookings model get all info of paricular products from products model. each populate creates one _id */
+    /* find all bookings by this user which has _id of that user. looks for all documents(one booking) in Bookings collection where the user field matches the id of the user whose bookings you want to retrieve and returns matching document. can be more than one document but are single individual objeccts. but in return returns in an array of objects coz find in mongodb returns in that format*/
     const bookings = await Bookings.find({ users: req.body.userId}).populate('products');
     return res.status(200).json({success:true, message: 'fetched bookings successfully', data:bookings});
   } catch (error) {
@@ -132,6 +132,7 @@ export const getAllBookings = async (req, res) => {
 userId: This will be an ObjectId pointing to the User collection, specifically the user who made the booking.
 products: This will be an ObjectId pointing to the Products collection, specifically the product that was booked.
 The populate Method: When you run the populate method, you tell Mongoose to replace those ObjectId values with the actual data from the referenced documents. This means that when you populate('userId'), Mongoose will replace the userId field with the actual user document from the User collection that corresponds to that userId ObjectId. */ 
+/* in Bookings Schema _id of document(one product) in Products collection and populate returns all info of that product fron Products collection*/
   try {
     const data = await Bookings.find()
 .populate('products', 'image location')//just send image, location from products collection.
