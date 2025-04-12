@@ -118,7 +118,7 @@ export const createBooking = async (req, res) => {
 export const getUserBooking = async (req, res) => {
   
   try {
-    /* find all bookings by this user which has _id of that user. looks for all documents(one booking) in Bookings collection where the user field matches the id of the user whose bookings you want to retrieve and returns matching document. can be more than one document but are single individual objeccts. but in return returns in an array of objects coz find in mongodb returns in that format*/
+    /* find all bookings by this user which has _id of that user. looks for all documents(one booking) in Bookings collection where the user field matches the id of the user whose bookings you want to retrieve and returns matching document. can be more than one document but are single individual objeccts. but in return returns in an array of objects coz find in mongodb returns in that format. mongo db always stores all data in multiple documents or in collection as objects only. only array is stored inside on field in object in document like {name: test, tags[1,2..]}find, findone etc are responsible for returning as array or array object*/
     const bookings = await Bookings.find({ users: req.body.userId}).populate('products');
     return res.status(200).json({success:true, message: 'fetched bookings successfully', data:bookings});
   } catch (error) {

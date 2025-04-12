@@ -19,7 +19,7 @@ authRoutes.post('/reset-password', resetPassword);
 authRoutes.get('/all-users', authenticateToken, authorizeAdmin, getAllUsers);
 authRoutes.delete('/delete-user', authenticateToken, authorizeAdmin, deleteUser);
 authRoutes.post('/admin-profile-edit', authenticateToken, authorizeAdmin, adminProfileEdit);
-authRoutes.post('/user-profile-edit', userProfileEdit);
+authRoutes.post('/user-profile-edit', authenticateToken, userProfileEdit);
 
 
 export default authRoutes;
