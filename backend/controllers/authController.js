@@ -304,7 +304,7 @@ const logout = async (req, res) => {
 const forgotPassword = async (req, res) => {
 const {email} = req.body;
 try {
-  const user = await Users.findOne({ email });
+  const user = await Users.findOne({ email, authProvider: "jwt" });
   if(!user) {
   return res.status(404).json({ success: false, message: 'user not found'});
   };
@@ -334,7 +334,7 @@ const {verificationCode, email, password} = req.body.formData;
 if(!verificationCode || !email || !password) {
  return res.status(403).json({ success: false, message: 'all fields required' })};
 try {
-  const user = await Users.findOne({ email });
+  const user = await Users.findOne({ email, authProvider: "jwt" });
   if (!user) {
     return res.status(404).json({ success: false, message: 'user not found'});
   };
