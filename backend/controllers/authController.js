@@ -396,7 +396,11 @@ const adminProfileEdit = async (req, res) => {
   
   if (!_id) {
     return res.status(400).json({ success: false, message: "Unauthorized Request" });
-  }
+  };
+  if(!password) {
+  res.status(400).json({ success: false, message: "Password is required" });
+  return;
+};
 
   try {
     /** 
@@ -433,7 +437,11 @@ const userProfileEdit = async (req, res) => {
   
   if (!_id) {
     return res.status(400).json({ success: false, message: "Unauthorized Request" });
-  }
+  };
+  if(!password) {
+  res.status(400).json({ success: false, message: "Password is required" });
+  return;
+};
 
   try {
     /** 
